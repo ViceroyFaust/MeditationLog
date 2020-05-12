@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.format.DateTimeParseException;
 
 public class Main {
 
@@ -16,11 +17,12 @@ public class Main {
 			String date = reader.readLine();
 			System.out.println("Please Enter the Length: ");
 			String length = reader.readLine();
-			if (!DateTimeValidator.isDateValid(date)) {
-				System.out.println("Wrong date");
-				break;
-			} else {
-				Logger.addLog(date, length);
+			try {
+			Logger.addLog(DateTimeHelper.parseDate(date), DateTimeHelper.convertToMinutes(length));
+			} catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+				System.out.println("NOTICE: Please enter a valid HH:MM:SS time.");
+			} catch (DateTimeParseException e) {
+				System.out.println("NOTICE: Please enter a valid YYYY:MM:DD date.");
 			}
 			break;
 		case "2":
