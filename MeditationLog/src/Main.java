@@ -13,16 +13,14 @@ public class Main {
 		switch (reader.readLine().toUpperCase()) {
 		case "1":
 		case "A":
-			System.out.println("Please Enter the Date: ");
+			System.out.print("Please Enter the Date: ");
 			String date = reader.readLine();
-			System.out.println("Please Enter the Length: ");
+			System.out.print("Please Enter the Length: ");
 			String length = reader.readLine();
-			try {
-			Logger.addLog(DateTimeHelper.parseDate(date), DateTimeHelper.convertToMinutes(length));
-			} catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-				System.out.println("NOTICE: Please enter a valid HH:MM:SS time.");
-			} catch (DateTimeParseException e) {
-				System.out.println("NOTICE: Please enter a valid YYYY:MM:DD date.");
+			if (DateTimeHelper.isDateValid(date) || DateTimeHelper.isLengthValid(length)) {
+				Logger.addLog(date, DateTimeHelper.lengthToMin(length));
+			} else {
+				System.out.println("ERROR: Incorrect Format Input");
 			}
 			break;
 		case "2":
