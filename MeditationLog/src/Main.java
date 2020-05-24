@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.time.format.DateTimeParseException;
 
 public class Main {
 
@@ -10,17 +9,18 @@ public class Main {
 
 		System.out.println("Please present a choice:");
 		System.out.printf("1. (A)dd Entry%n2. (M)odify Entry%n3. (R)emove Entry%n4. Print (S)tatistics%n5. (H)elp%n");
+		String date, length;
 		switch (reader.readLine().toUpperCase()) {
 		case "1":
 		case "A":
 			System.out.print("Please Enter the Date: ");
-			String date = reader.readLine();
+			date = reader.readLine();
 			System.out.print("Please Enter the Length: ");
-			String length = reader.readLine();
+			length = reader.readLine();
 			if (DateTimeHelper.isDateValid(date) || DateTimeHelper.isLengthValid(length)) {
 				Logger.addLog(date, DateTimeHelper.lengthToMin(length));
 			} else {
-				System.out.println("ERROR: Incorrect Format Input");
+				System.out.print("ERROR: Incorrect Format Input");
 			}
 			break;
 		case "2":
@@ -28,6 +28,11 @@ public class Main {
 			break;
 		case "3":
 		case "R":
+			System.out.print("Please Enter the Date: ");
+			date = reader.readLine();
+			System.out.print("Please Enter the Length: ");
+			length = reader.readLine();
+			Logger.removeLog(date, DateTimeHelper.lengthToMin(length));
 			break;
 		case "4":
 		case "S":
