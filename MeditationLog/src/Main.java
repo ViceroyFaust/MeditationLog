@@ -20,7 +20,7 @@ public class Main {
 			if (DateTimeHelper.isDateValid(date) && DateTimeHelper.isLengthValid(length)) {
 				Logger.addLog(date, length);
 			} else {
-				System.out.print("ERROR: Incorrect Format Input");
+				System.out.print("ERROR: Incorrectly Formatted Input");
 			}
 			break;
 		case "2":
@@ -30,9 +30,19 @@ public class Main {
 		case "R":
 			System.out.print("Please Enter the Date: ");
 			date = reader.readLine();
-			System.out.print("Please Enter the Length: ");
-			length = reader.readLine();
-			Logger.removeLog(date, length);
+			if (DateTimeHelper.isDateValid(date)) {
+				String options = Logger.dateSearch(date);
+				System.out.println(options);
+				System.out.println("Enter what time to delete: ");
+				length = reader.readLine();
+				if (DateTimeHelper.isLengthValid(length)) {
+					Logger.removeLog(date, length);
+				} else {
+					System.out.println("ERROR: Incorrectly Formatted Length");
+				}
+			} else {
+				System.out.println("ERROR: Incorrectly Formatted Date");
+			}
 			break;
 		case "4":
 		case "S":

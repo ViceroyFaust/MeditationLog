@@ -31,7 +31,6 @@ public class Logger {
 			System.out.println(builder.toString());
 			reader.close();
 			FileWriter write = new FileWriter(file);
-			write.write(builder.toString());
 			write.close();
 	}
 	
