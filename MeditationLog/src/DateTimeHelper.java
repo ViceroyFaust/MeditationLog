@@ -29,9 +29,9 @@ public class DateTimeHelper {
 		}
 		return true;
 	}
-	
+
 	public static int lengthToMin(String length) {
 		String lengths[] = length.split(":");
-		return  Integer.parseInt(lengths[0]) * 60 + Integer.parseInt(lengths[1]) + (int)((double)Integer.parseInt(lengths[2]) / 60 + .5);
+		return Integer.parseInt(lengths[0]) * 60 + Integer.parseInt(lengths[1]) + (int) ((double) Integer.parseInt(lengths[2]) / 60 + .5);
 	}
 }
