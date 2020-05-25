@@ -12,7 +12,7 @@ When a user selects to Add a log, they will be asked to provide a valid ISO-8601
 When a user selects to Modify a log, they will be asked which date they would like to modify. Once the user enters a valid ISO-8601 (YYYY-MM-DD) date, the program will print out all meditations within that date. The user will then select the date they would like to modify, and may change the meditation length.
 
 ### Remove
-When a user selects to Remove a log, they will be asked whcih date they would like to remove. Once the user enters a valid ISO-8601 (YYYY-MM-DD) date, the program will print out all meditations within that date. The user will then be prompted to select which of the logs they would like to delete.
+When a user selects to Remove a log, they will be asked which date they would like to remove. Once the user enters a valid ISO-8601 (YYYY-MM-DD) date, the program will print out all meditations within that date. The user will then be prompted to select which of the logs they would like to delete.
 
 ### Print Statistics
 When a user selects to Print Statistics, the application will go parse through the entire log sheet. The application will determine the latest meditation streak and the longest the user had before, and it will aggregate all of the meditation lengths in order to compile daily, weekly, and monthly averages.
