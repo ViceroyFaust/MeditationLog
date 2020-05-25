@@ -7,13 +7,13 @@ import java.io.PrintWriter;
 
 public class Logger {
 
-	public static void addLog(String date, int length) throws IOException {
+	public static void addLog(String date, String length) throws IOException {
 		PrintWriter write = new PrintWriter(new FileWriter(new File("data.csv"), true));
-		write.printf("%s,%d%n", date, length);
+		write.printf("%s,%s%n", date, length);
 		write.close();
 	}
 	
-	public static void removeLog(String date, int length) throws IOException {
+	public static void removeLog(String date, String length) throws IOException {
 			File file = new File("data.csv");
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			StringBuilder builder = new StringBuilder();

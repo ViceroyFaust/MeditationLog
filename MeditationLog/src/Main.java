@@ -17,8 +17,8 @@ public class Main {
 			date = reader.readLine();
 			System.out.print("Please Enter the Length: ");
 			length = reader.readLine();
-			if (DateTimeHelper.isDateValid(date) || DateTimeHelper.isLengthValid(length)) {
-				Logger.addLog(date, DateTimeHelper.lengthToMin(length));
+			if (DateTimeHelper.isDateValid(date) && DateTimeHelper.isLengthValid(length)) {
+				Logger.addLog(date, length);
 			} else {
 				System.out.print("ERROR: Incorrect Format Input");
 			}
@@ -32,7 +32,7 @@ public class Main {
 			date = reader.readLine();
 			System.out.print("Please Enter the Length: ");
 			length = reader.readLine();
-			Logger.removeLog(date, DateTimeHelper.lengthToMin(length));
+			Logger.removeLog(date, length);
 			break;
 		case "4":
 		case "S":
