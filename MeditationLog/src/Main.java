@@ -32,13 +32,17 @@ public class Main {
 			date = reader.readLine();
 			if (DateTimeHelper.isDateValid(date)) {
 				String options = Logger.dateSearch(date);
-				System.out.println(options);
-				System.out.println("Enter what time to delete: ");
-				length = reader.readLine();
-				if (DateTimeHelper.isLengthValid(length)) {
-					Logger.removeLog(date, length);
+				if (!options.equals("")) {
+					System.out.println(options);
+					System.out.println("Enter what time to delete: ");
+					length = reader.readLine();
+					if (DateTimeHelper.isLengthValid(length)) {
+						Logger.removeLog(date, length);
+					} else {
+						System.out.println("ERROR: Incorrectly Formatted Length");
+					}
 				} else {
-					System.out.println("ERROR: Incorrectly Formatted Length");
+					System.out.println("No such date exists");
 				}
 			} else {
 				System.out.println("ERROR: Incorrectly Formatted Date");

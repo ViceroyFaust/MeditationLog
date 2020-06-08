@@ -28,7 +28,6 @@ public class Logger {
 				builder.append(line);
 				builder.append("\n");
 			}
-			System.out.println(builder.toString());
 			reader.close();
 			FileWriter write = new FileWriter(file);
 			write.close();

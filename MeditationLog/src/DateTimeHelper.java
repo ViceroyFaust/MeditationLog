@@ -20,7 +20,7 @@ public class DateTimeHelper {
 			return false;
 		}
 		for (int i = 0; i < 8; i++) {
-			if (i == 2 || i == 5) {
+			if (i == 2 || i == 5) { // characters at position 2 and 5 aren't in the alphabet
 				continue;
 			}
 			if (length.charAt(i) < 48 || length.charAt(i) > 57) {
