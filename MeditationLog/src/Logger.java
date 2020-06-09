@@ -20,8 +20,8 @@ public class Logger {
 			StringBuilder builder = new StringBuilder();
 			String line;
 			int delete = 1;
-			while((line = reader.readLine()) != null) {
-				if (line.equals(date + "," + length) && delete != 0) {
+			while((line = reader.readLine()) != null) { // Put file contents into builder
+				if (line.equals(date + "," + length) && delete != 0) { // Omit the targeted line from builder
 					delete--;
 					continue;
 				}
@@ -29,8 +29,9 @@ public class Logger {
 				builder.append("\n");
 			}
 			reader.close();
-			FileWriter write = new FileWriter(file);
-			write.close();
+			FileWriter writer = new FileWriter(file); // Write the builder to file
+			writer.write(builder.toString());
+			writer.close();
 	}
 	
 	public static String dateSearch(String date) throws IOException {
