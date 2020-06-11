@@ -12,13 +12,13 @@ public class Journal {
 
 	private static final File file = new File("data.csv");
 
-	public static void addJournal(String date, String length) throws IOException {
+	public static void addJournal(JournalEntry j) throws IOException {
 		List<JournalEntry> list = readData();
 		PrintWriter write = new PrintWriter(new FileWriter(file));
-		list.add(new JournalEntry(date, length));
+		list.add(j);
 		Collections.sort(list);
-		for (JournalEntry j : list) {
-			write.println(j.toString());
+		for (JournalEntry journal : list) {
+			write.println(journal.toString());
 		}
 		write.close();
 	}
