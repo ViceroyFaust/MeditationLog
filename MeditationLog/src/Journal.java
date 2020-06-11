@@ -11,37 +11,42 @@ import java.util.List;
 public class Journal {
 
 	private static final File file = new File("data.csv");
-	
-	public static void addLog(String date, String length) throws IOException {
+
+	public static void addJournal(String date, String length) throws IOException {
 		PrintWriter write = new PrintWriter(new FileWriter(file, true));
-		write.printf("%s,%s%n", date, length);
+		List<JournalEntry> list = readData();
+		list.add(new JournalEntry(date, length));
+		Collections.sort(list);
+		for (JournalEntry j : list) {
+			write.printf(j.toString());
+		}
 		write.close();
 	}
-	
+
 	public static void removeLog(String date, String length) throws IOException {
-			BufferedReader reader = new BufferedReader(new FileReader(file));
-			StringBuilder builder = new StringBuilder();
-			String line;
-			int delete = 1;
-			while((line = reader.readLine()) != null) { // Put file contents into builder
-				if (line.equals(date + "," + length) && delete != 0) { // Omit the targeted line from builder
-					delete--;
-					continue;
-				}
-				builder.append(line);
-				builder.append("\n");
+		BufferedReader reader = new BufferedReader(new FileReader(file));
+		StringBuilder builder = new StringBuilder();
+		String line;
+		int delete = 1;
+		while ((line = reader.readLine()) != null) { // Put file contents into builder
+			if (line.equals(date + "," + length) && delete != 0) { // Omit the targeted line from builder
+				delete--;
+				continue;
 			}
-			reader.close();
-			FileWriter writer = new FileWriter(file); // Write the builder to file
-			writer.write(builder.toString());
-			writer.close();
+			builder.append(line);
+			builder.append("\n");
+		}
+		reader.close();
+		FileWriter writer = new FileWriter(file); // Write the builder to file
+		writer.write(builder.toString());
+		writer.close();
 	}
-	
+
 	public static String dateSearch(String date) throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		StringBuilder builder = new StringBuilder();
 		String line;
-		while((line = reader.readLine()) != null) {
+		while ((line = reader.readLine()) != null) {
 			if (line.contains(date)) {
 				builder.append(line);
 				builder.append("\n");
@@ -50,12 +55,12 @@ public class Journal {
 		reader.close();
 		return builder.toString();
 	}
-	
+
 	public static List<JournalEntry> readData() throws IOException {
 		List<JournalEntry> list = new ArrayList<JournalEntry>();
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String line;
-		while((line = reader.readLine()) != null) {
+		while ((line = reader.readLine()) != null) {
 			list.add(JournalEntry.parse(line));
 		}
 		Collections.sort(list);

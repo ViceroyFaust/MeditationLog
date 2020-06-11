@@ -18,7 +18,7 @@ public class Main {
 			System.out.print("Please Enter the Length: ");
 			length = reader.readLine();
 			if (DateTimeHelper.isDateValid(date) && DateTimeHelper.isLengthValid(length)) {
-				Journal.addLog(date, length);
+				Journal.addJournal(date, length);
 			} else {
 				System.out.print("ERROR: Incorrectly Formatted Input");
 			}
