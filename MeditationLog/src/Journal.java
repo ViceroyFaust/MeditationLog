@@ -1,11 +1,11 @@
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Journal {
@@ -56,8 +56,10 @@ public class Journal {
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String line;
 		while((line = reader.readLine()) != null) {
-			
+			list.add(JournalEntry.parse(line));
 		}
+		Collections.sort(list);
+		reader.close();
 		return list;
 	}
 }
