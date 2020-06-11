@@ -4,11 +4,11 @@ public class JournalEntry implements Comparable<JournalEntry> {
 	private LocalDate date;
 	private String length;
 
-	public JournalEntry(String date, String length) {
+	public JournalEntry(CharSequence date, CharSequence length) {
 		this.date = LocalDate.parse(date);
-		this.length = length;
+		this.length = length.toString();
 	}
-
+	
 	public LocalDate getDate() {
 		return date;
 	}
@@ -33,4 +33,7 @@ public class JournalEntry implements Comparable<JournalEntry> {
 		return this.date.compareTo(j.getDate());
 	}
 
+	public static JournalEntry parse(CharSequence text) {
+		return new JournalEntry(text.subSequence(0, 10), text.subSequence(11, 19));
+	}
 }
