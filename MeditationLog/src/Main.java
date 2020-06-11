@@ -18,7 +18,7 @@ public class Main {
 			System.out.print("Please Enter the Length: ");
 			length = reader.readLine();
 			if (DateTimeHelper.isDateValid(date) && DateTimeHelper.isLengthValid(length)) {
-				Logger.addLog(date, length);
+				Journal.addLog(date, length);
 			} else {
 				System.out.print("ERROR: Incorrectly Formatted Input");
 			}
@@ -31,13 +31,13 @@ public class Main {
 			System.out.print("Please Enter the Date: ");
 			date = reader.readLine();
 			if (DateTimeHelper.isDateValid(date)) {
-				String options = Logger.dateSearch(date);
+				String options = Journal.dateSearch(date);
 				if (!options.equals("")) {
 					System.out.println(options);
 					System.out.println("Enter what time to delete: ");
 					length = reader.readLine();
 					if (DateTimeHelper.isLengthValid(length)) {
-						Logger.removeLog(date, length);
+						Journal.removeLog(date, length);
 					} else {
 						System.out.println("ERROR: Incorrectly Formatted Length");
 					}

@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class Logger {
+public class Journal {
 
 	private static final File file = new File("data.csv");
 	
