@@ -1,6 +1,7 @@
 import java.time.LocalDate;
+import java.util.Comparator;
 
-public class JournalEntry implements Comparable<JournalEntry> {
+public class JournalEntry implements Comparable<JournalEntry>, Comparator<JournalEntry> {
 	private LocalDate date;
 	private String length;
 
@@ -31,6 +32,11 @@ public class JournalEntry implements Comparable<JournalEntry> {
 	@Override
 	public int compareTo(JournalEntry j) {
 		return this.date.compareTo(j.getDate());
+	}
+	
+	@Override
+	public int compare(JournalEntry o1, JournalEntry o2) {
+		return o1.compareTo(o2);
 	}
 
 	public static JournalEntry parse(CharSequence text) {
