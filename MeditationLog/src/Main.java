@@ -37,7 +37,7 @@ public class Main {
 					System.out.println("Enter what time to delete: ");
 					length = reader.readLine();
 					if (DateTimeHelper.isLengthValid(length)) {
-						Journal.removeLog(date, length);
+						Journal.removeJournal(new JournalEntry(date, length));
 					} else {
 						System.out.println("ERROR: Incorrectly Formatted Length");
 					}

@@ -23,23 +23,16 @@ public class Journal {
 		write.close();
 	}
 
-	public static void removeLog(String date, String length) throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader(file));
-		StringBuilder builder = new StringBuilder();
-		String line;
-		int delete = 1;
-		while ((line = reader.readLine()) != null) { // Put file contents into builder
-			if (line.equals(date + "," + length) && delete != 0) { // Omit the targeted line from builder
-				delete--;
+	public static void removeJournal(JournalEntry j) throws IOException {
+		List<JournalEntry> list = readData();
+		PrintWriter write = new PrintWriter(new FileWriter(file));
+		for (JournalEntry journal : list) {
+			if (journal.equals(j)) {
 				continue;
 			}
-			builder.append(line);
-			builder.append("\n");
+			write.println(journal.toString());
 		}
-		reader.close();
-		FileWriter writer = new FileWriter(file); // Write the builder to file
-		writer.write(builder.toString());
-		writer.close();
+		write.close();
 	}
 
 	public static String dateSearch(String date) throws IOException {
