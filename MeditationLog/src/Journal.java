@@ -27,24 +27,20 @@ public class Journal {
 		List<JournalEntry> list = readData();
 		PrintWriter write = new PrintWriter(new FileWriter(file));
 		for (JournalEntry journal : list) {
-			if (journal.equals(j)) {
-				continue;
+			if (!journal.equals(j)) {
+				write.println(journal.toString());
 			}
-			write.println(journal.toString());
 		}
 		write.close();
 	}
 
 	public static List<JournalEntry> dateSearch(String date) throws IOException {
-		List<JournalEntry> list = new ArrayList<JournalEntry>();
-		BufferedReader reader = new BufferedReader(new FileReader(file));
-		String line;
-		while ((line = reader.readLine()) != null) {
-			if (line.substring(0, 10).equals(date)) {
-				list.add(JournalEntry.parse(line));
+		List<JournalEntry> list = readData();
+		for (int i = 0; i < list.size(); i++) {
+			if (!list.get(i).getDate().toString().equals(date)) {
+				list.remove(i);
 			}
 		}
-		reader.close();
 		return list;
 	}
 
