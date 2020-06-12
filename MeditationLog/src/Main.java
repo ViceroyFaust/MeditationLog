@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 public class Main {
 
@@ -31,18 +32,16 @@ public class Main {
 			System.out.print("Please Enter the Date: ");
 			date = reader.readLine();
 			if (DateTimeHelper.isDateValid(date)) {
-				String options = Journal.dateSearch(date);
-				if (!options.equals("")) {
-					System.out.println(options);
-					System.out.println("Enter what time to delete: ");
-					length = reader.readLine();
-					if (DateTimeHelper.isLengthValid(length)) {
-						Journal.removeJournal(new JournalEntry(date, length));
-					} else {
-						System.out.println("ERROR: Incorrectly Formatted Length");
+				List<JournalEntry> list = Journal.dateSearch(date);
+				if (list.size() > 0) {
+					System.out.println(list.size() + " Dates Found:");
+					for (JournalEntry journal : list) {
+						System.out.println(journal.getLength());
 					}
+					System.out.print("Select Time to Remove: ");
+					Journal.removeJournal(new JournalEntry(date, reader.readLine()));
 				} else {
-					System.out.println("No such date exists");
+					System.out.println("No Date Found");
 				}
 			} else {
 				System.out.println("ERROR: Incorrectly Formatted Date");

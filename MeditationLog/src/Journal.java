@@ -35,18 +35,17 @@ public class Journal {
 		write.close();
 	}
 
-	public static String dateSearch(String date) throws IOException {
+	public static List<JournalEntry> dateSearch(String date) throws IOException {
+		List<JournalEntry> list = new ArrayList<JournalEntry>();
 		BufferedReader reader = new BufferedReader(new FileReader(file));
-		StringBuilder builder = new StringBuilder();
 		String line;
 		while ((line = reader.readLine()) != null) {
-			if (line.contains(date)) {
-				builder.append(line);
-				builder.append("\n");
+			if (line.substring(0, 10).equals(date)) {
+				list.add(JournalEntry.parse(line));
 			}
 		}
 		reader.close();
-		return builder.toString();
+		return list;
 	}
 
 	public static List<JournalEntry> readData() throws IOException {
