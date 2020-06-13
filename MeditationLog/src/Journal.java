@@ -39,6 +39,7 @@ public class Journal {
 		for (int i = 0; i < list.size(); i++) {
 			if (!list.get(i).getDate().toString().equals(date)) {
 				list.remove(i);
+				i--;
 			}
 		}
 		return list;
