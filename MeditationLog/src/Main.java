@@ -39,7 +39,11 @@ public class Main {
 					medTime = reader.readLine();
 					System.out.print("Enter New Time: ");
 					Journal.modifyJournal(new JournalEntry(date, medTime), new JournalEntry(date, reader.readLine()));
+				} else {
+					System.out.println("No Date Found");
 				}
+			} else {
+				System.out.println("ERROR: Incorrectly Formatted Date");
 			}
 			break;
 		case "3":
