@@ -26,6 +26,21 @@ public class Main {
 			break;
 		case "2":
 		case "M":
+			System.out.print("Please Enter the Date: ");
+			date = reader.readLine();
+			if (DateTimeHelper.isDateValid(date)) {
+				List<JournalEntry> list = Journal.dateSearch(date);
+				if (list.size() > 0) {
+					System.out.println(list.size() + " Dates Found:");
+					for (JournalEntry journal : list) {
+						System.out.println(journal.getLength());
+					}
+					System.out.print("Select Time to Modify: ");
+					length = reader.readLine();
+					System.out.print("Enter New Time: ");
+					Journal.modifyJournal(new JournalEntry(date, length), new JournalEntry(date, reader.readLine()));
+				}
+			}
 			break;
 		case "3":
 		case "R":
