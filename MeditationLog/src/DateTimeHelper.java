@@ -15,23 +15,23 @@ public class DateTimeHelper {
 		return true;
 	}
 
-	public static boolean isMedLengthValid(String medLength) { // valid length is HH:MM:SS
-		if (medLength.length() != 8 || medLength.charAt(2) != ':' || medLength.charAt(5) != ':') {
+	public static boolean isMedTimeValid(String medTime) { // valid length is HH:MM:SS
+		if (medTime.length() != 8 || medTime.charAt(2) != ':' || medTime.charAt(5) != ':') {
 			return false;
 		}
 		for (int i = 0; i < 8; i++) {
 			if (i == 2 || i == 5) { // characters at position 2 and 5 aren't in the alphabet
 				continue;
 			}
-			if (medLength.charAt(i) < 48 || medLength.charAt(i) > 57) {
+			if (medTime.charAt(i) < 48 || medTime.charAt(i) > 57) {
 				return false;
 			}
 		}
 		return true;
 	}
 
-	public static int medLengthToMin(String medLength) {
-		String lengths[] = medLength.split(":");
-		return Integer.parseInt(lengths[0]) * 60 + Integer.parseInt(lengths[1]) + (int) ((double) Integer.parseInt(lengths[2]) / 60 + .5);
+	public static int medTimeToMin(String medTime) {
+		String times[] = medTime.split(":");
+		return Integer.parseInt(times[0]) * 60 + Integer.parseInt(times[1]) + (int) ((double) Integer.parseInt(times[2]) / 60 + .5);
 	}
 }

@@ -18,7 +18,7 @@ public class Main {
 			date = reader.readLine();
 			System.out.print("Please Enter the Length: ");
 			medTime = reader.readLine();
-			if (DateTimeHelper.isDateValid(date) && DateTimeHelper.isMedLengthValid(medTime)) {
+			if (DateTimeHelper.isDateValid(date) && DateTimeHelper.isMedTimeValid(medTime)) {
 				Journal.addJournal(new JournalEntry(date, medTime));
 			} else {
 				System.out.print("ERROR: Incorrectly Formatted Input");
@@ -33,7 +33,7 @@ public class Main {
 				if (list.size() > 0) {
 					System.out.println(list.size() + " Dates Found:");
 					for (JournalEntry journal : list) {
-						System.out.println(journal.getMedLength());
+						System.out.println(journal.getMedTime());
 					}
 					System.out.print("Select Time to Modify: ");
 					medTime = reader.readLine();
@@ -51,7 +51,7 @@ public class Main {
 				if (list.size() > 0) {
 					System.out.println(list.size() + " Dates Found:");
 					for (JournalEntry journal : list) {
-						System.out.println(journal.getMedLength());
+						System.out.println(journal.getMedTime());
 					}
 					System.out.print("Select Time to Remove: ");
 					Journal.removeJournal(new JournalEntry(date, reader.readLine()));
