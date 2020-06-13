@@ -10,16 +10,16 @@ public class Main {
 
 		System.out.println("Please present a choice:");
 		System.out.printf("1. (A)dd Entry%n2. (M)odify Entry%n3. (R)emove Entry%n4. Print (S)tatistics%n5. (H)elp%n");
-		String date, length;
+		String date, medTime;
 		switch (reader.readLine().toUpperCase()) {
 		case "1":
 		case "A":
 			System.out.print("Please Enter the Date: ");
 			date = reader.readLine();
 			System.out.print("Please Enter the Length: ");
-			length = reader.readLine();
-			if (DateTimeHelper.isDateValid(date) && DateTimeHelper.isLengthValid(length)) {
-				Journal.addJournal(new JournalEntry(date, length));
+			medTime = reader.readLine();
+			if (DateTimeHelper.isDateValid(date) && DateTimeHelper.isMedLengthValid(medTime)) {
+				Journal.addJournal(new JournalEntry(date, medTime));
 			} else {
 				System.out.print("ERROR: Incorrectly Formatted Input");
 			}
@@ -33,12 +33,12 @@ public class Main {
 				if (list.size() > 0) {
 					System.out.println(list.size() + " Dates Found:");
 					for (JournalEntry journal : list) {
-						System.out.println(journal.getLength());
+						System.out.println(journal.getMedLength());
 					}
 					System.out.print("Select Time to Modify: ");
-					length = reader.readLine();
+					medTime = reader.readLine();
 					System.out.print("Enter New Time: ");
-					Journal.modifyJournal(new JournalEntry(date, length), new JournalEntry(date, reader.readLine()));
+					Journal.modifyJournal(new JournalEntry(date, medTime), new JournalEntry(date, reader.readLine()));
 				}
 			}
 			break;
@@ -51,7 +51,7 @@ public class Main {
 				if (list.size() > 0) {
 					System.out.println(list.size() + " Dates Found:");
 					for (JournalEntry journal : list) {
-						System.out.println(journal.getLength());
+						System.out.println(journal.getMedLength());
 					}
 					System.out.print("Select Time to Remove: ");
 					Journal.removeJournal(new JournalEntry(date, reader.readLine()));

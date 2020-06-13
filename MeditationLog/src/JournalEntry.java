@@ -3,30 +3,30 @@ import java.util.Comparator;
 
 public class JournalEntry implements Comparable<JournalEntry>, Comparator<JournalEntry> {
 	private LocalDate date;
-	private String length;
+	private String medLength;
 
 	public JournalEntry(CharSequence date, CharSequence length) {
 		this.date = LocalDate.parse(date);
-		this.length = length.toString();
+		this.medLength = length.toString();
 	}
 	
 	public LocalDate getDate() {
 		return date;
 	}
 
-	public String getLength() {
-		return length;
+	public String getMedLength() {
+		return medLength;
 	}
 
 	@Override
 	public String toString() {
-		return date.toString() + "," + length;
+		return date.toString() + "," + medLength;
 	}
 
 	@Override
 	public boolean equals(Object o) {
 		JournalEntry j = (JournalEntry) o;
-		return this.date.equals(j.getDate()) && this.length.equals(j.getLength());
+		return this.date.equals(j.getDate()) && this.medLength.equals(j.getMedLength());
 	}
 
 	@Override
