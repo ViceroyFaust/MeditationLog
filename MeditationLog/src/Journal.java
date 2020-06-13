@@ -33,6 +33,16 @@ public class Journal {
 		}
 		write.close();
 	}
+	
+	public static void modifyJournal(JournalEntry j1, JournalEntry j2) throws IOException {
+		List<JournalEntry> list = readData();
+		list.set(list.indexOf(j1), j2);
+		PrintWriter write = new PrintWriter(new FileWriter(file));
+		for (JournalEntry journal : list) {
+			write.println(journal.toString());
+		}
+		write.close();
+	}
 
 	public static List<JournalEntry> dateSearch(String date) throws IOException {
 		List<JournalEntry> list = readData();
