@@ -31,4 +31,22 @@ public class Calculator {
 			return 0;
 		}
 	}
+
+	/**
+	 * Calculates a minute average of the JournalEntry list.
+	 * 
+	 * @param list JournalEntry List representing.
+	 * @return double representation of average minutes meditated per day.
+	 */
+	public static double getDailyAverage(List<JournalEntry> list) {
+		if (list.size() != 0) {
+			double sum = 0;
+			for (JournalEntry journal : list) {
+				sum += DateTimeHelper.medTimeToMin(journal.getMedTime());
+			}
+			return sum / list.size();
+		} else {
+			return 0;
+		}
+	}
 }
