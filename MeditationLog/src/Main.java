@@ -69,6 +69,12 @@ public class Main {
 			break;
 		case "4": // Print statistics
 		case "S":
+			System.out.println("...:::Statistics:::...");
+			System.out.println("Time meditated per day: " + Calculator.getDailyAverage(Journal.readData()));
+			System.out.println("Time meditated per week: " + Calculator.getWeeklyAverage(Journal.readData()));
+			System.out.println("Time meditated per month: " + Calculator.getMonthlyAverage(Journal.readData()));
+			System.out.println("\nLongest streak: " + Calculator.getHighestStreak(Journal.readData()));
+			System.out.println("Total minutes of meditation " + Calculator.getMinuteSum(Journal.readData()));
 			break;
 		default:
 			System.out.println("Error: bad input");
