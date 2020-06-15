@@ -56,7 +56,8 @@ public class Calculator {
 	}
 
 	/**
-	 * Calculates a minute average of JournalEntry list per week.
+	 * Calculates a minute average of JournalEntry List per week. Works best once
+	 * the user has accumulated over 2 weeks worth of data.
 	 * 
 	 * @param list JournalEntry List representing a record of meditations.
 	 * @return double representation of average minutes meditated per week. Returns
@@ -76,6 +77,28 @@ public class Calculator {
 			return 0;
 		}
 
+	}
+
+	/**
+	 * Calculates a minute average of JournalEntry List per month. Works best once
+	 * the user has accumulated over 2 months worth of data.
+	 * 
+	 * @param list JournalEntry List representing a record of meditations.
+	 * @return double representation of average minutes meditated per month. Returns
+	 *         0 in the case that the list is empty.
+	 */
+	public static double getMonthlyAverage(List<JournalEntry> list) {
+		if (list.size() != 0) {
+			int month = 1;
+			for (int i = 0; i < list.size(); i++) {
+				if (list.get(i).getDate().getMonth() != list.get(i + 1).getDate().getMonth()) {
+					month++;
+				}
+			}
+			return getMinuteSum(list) / (double) month;
+		} else {
+			return 0;
+		}
 	}
 
 	/**
