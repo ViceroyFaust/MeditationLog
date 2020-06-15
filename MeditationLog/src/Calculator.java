@@ -1,5 +1,12 @@
 import java.util.List;
 
+/**
+ * Class responsible for calculating streaks, daily, weekly, and monthly
+ * averages of JournalEntry Lists.
+ * 
+ * @author dfowl
+ *
+ */
 public class Calculator {
 	/**
 	 * Checks all of the JournalEntries within a List for continuity. It is assumed
@@ -33,20 +40,54 @@ public class Calculator {
 	}
 
 	/**
-	 * Calculates a minute average of the JournalEntry list.
+	 * Calculates a minute average of the JournalEntry list per day.
 	 * 
-	 * @param list JournalEntry List representing.
-	 * @return double representation of average minutes meditated per day.
+	 * @param list JournalEntry List representing a record of meditations.
+	 * @return double representation of average minutes meditated per day. Returns 0
+	 *         in the case that the List is empty.
 	 */
 	public static double getDailyAverage(List<JournalEntry> list) {
 		if (list.size() != 0) {
-			double sum = 0;
-			for (JournalEntry journal : list) {
-				sum += DateTimeHelper.medTimeToMin(journal.getMedTime());
-			}
-			return sum / list.size();
+			return getMinuteSum(list) / list.size();
 		} else {
 			return 0;
 		}
+	}
+
+	/**
+	 * Calculates a minute average of JournalEntry list per week.
+	 * 
+	 * @param list JournalEntry List representing a record of meditations.
+	 * @return double representation of average minutes meditated per week. Returns
+	 *         0 in the case that the List is empty.
+	 */
+	public static double getWeeklyAverage(List<JournalEntry> list) {
+		if (list.size() != 0) {
+			int week = 1;
+			for (int i = 1; i < list.size(); i++) {
+				
+			}
+			return getMinuteSum(list) / week;
+
+		} else {
+			return 0;
+		}
+
+	}
+
+	/**
+	 * Calculates the minute total of all meditations in a List of JournalEntry
+	 * objects. Returns 0 if the List is empty.
+	 * 
+	 * @param list JournalEntry List representing a record of meditations.
+	 * @return int representation of total minutes meditated. Returns 0 in the case
+	 *         that the List is empty. Never returns a number less than 0.
+	 */
+	public static int getMinuteSum(List<JournalEntry> list) {
+		int sum = 0;
+		for (JournalEntry journal : list) {
+			sum += DateTimeHelper.medTimeToMin(journal.getMedTime());
+		}
+		return sum;
 	}
 }
