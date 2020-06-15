@@ -1,3 +1,4 @@
+import java.time.DayOfWeek;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ public class Calculator {
 	 */
 	public static int getHighestStreak(List<JournalEntry> list) {
 		if (list.size() != 0) {
-			int highest = 1;
+			int highest = 1; // The lowest streak possible is 1
 			int current = 1;
 			for (int i = 1; i < list.size(); i++) {
 				if (list.get(i).compareTo(list.get(i - 1)) == 1) {
@@ -64,8 +65,10 @@ public class Calculator {
 	public static double getWeeklyAverage(List<JournalEntry> list) {
 		if (list.size() != 0) {
 			int week = 1;
-			for (int i = 1; i < list.size(); i++) {
-				
+			for (int i = 0; i < list.size(); i++) {
+				if (i > 1 && list.get(i).getDate().getDayOfWeek() == DayOfWeek.SUNDAY) {
+					week++;
+				}
 			}
 			return getMinuteSum(list) / week;
 
