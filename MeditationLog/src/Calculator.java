@@ -70,7 +70,7 @@ public class Calculator {
 					week++;
 				}
 			}
-			return getMinuteSum(list) / week;
+			return getMinuteSum(list) / (double) week;
 
 		} else {
 			return 0;
