@@ -76,6 +76,11 @@ public class Main {
 			System.out.println("\nLongest streak: " + Calculator.getHighestStreak(Journal.readData()));
 			System.out.println("Total minutes of meditation " + Calculator.getMinuteSum(Journal.readData()));
 			break;
+		case "5":
+		case "H":
+			System.out.println("All dates should be entered as ISO-8601 or yyyy-MM-dd. An example would be: 2003-05-28");
+			System.out.println("All time lengths should be entered as HH:MM:SS. An example would be 03:25:45");
+			break;
 		default:
 			System.out.println("Error: bad input");
 		}
