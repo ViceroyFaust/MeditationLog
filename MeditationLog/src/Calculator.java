@@ -90,7 +90,7 @@ public class Calculator {
 	public static double getMonthlyAverage(List<JournalEntry> list) {
 		if (list.size() != 0) {
 			int month = 1;
-			for (int i = 0; i < list.size(); i++) {
+			for (int i = 0; i < list.size() - 1; i++) {
 				if (list.get(i).getDate().getMonth() != list.get(i + 1).getDate().getMonth()) {
 					month++;
 				}
