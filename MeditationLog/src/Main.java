@@ -32,10 +32,7 @@ public class Main {
 			if (DateTimeHelper.isDateValid(date)) {
 				List<JournalEntry> list = Journal.dateSearch(date);
 				if (list.size() > 0) {
-					System.out.println(list.size() + " Dates Found:");
-					for (JournalEntry journal : list) { // Prints out the times of every Journal of a needed date
-						System.out.println(journal.getMedTime());
-					}
+					listTimes(list);
 					System.out.print("Select Time to Modify: ");
 					medTime = reader.readLine();
 					System.out.print("Enter New Time: ");
@@ -54,10 +51,7 @@ public class Main {
 			if (DateTimeHelper.isDateValid(date)) {
 				List<JournalEntry> list = Journal.dateSearch(date);
 				if (list.size() > 0) {
-					System.out.println(list.size() + " Dates Found:");
-					for (JournalEntry journal : list) { // Prints out the times of every Journal of a needed date
-						System.out.println(journal.getMedTime());
-					}
+					listTimes(list);
 					System.out.print("Select Time to Remove: ");
 					Journal.removeJournal(new JournalEntry(date, reader.readLine()));
 				} else {
@@ -83,6 +77,19 @@ public class Main {
 			break;
 		default:
 			System.out.println("Error: bad input");
+		}
+	}
+
+	/**
+	 * Prints out the meditation times from a list of JournalEntries, separated by a
+	 * newline.
+	 * 
+	 * @param list of JournalEntries
+	 */
+	private static void listTimes(List<JournalEntry> list) {
+		System.out.println("---" + list.size() + " entries found---");
+		for (JournalEntry journal : list) {
+			System.out.println(journal.getMedTime());
 		}
 	}
 
