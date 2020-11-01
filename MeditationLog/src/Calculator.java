@@ -25,10 +25,12 @@ public class Calculator {
 			int highest = 1; // The lowest streak possible is 1
 			int current = 1;
 			for (int i = 1; i < list.size(); i++) {
-				if (list.get(i).compareTo(list.get(i - 1)) == 1) {
+				if (list.get(i).compareTo(list.get(i - 1)) == 1) { ///
 					current++;
-				} else if (list.get(i).compareTo(list.get(i - 1)) != 0) {
-					if (highest < current) {
+				}
+				// Check the streak size when streak ends or when the array ends
+				if (list.get(i).compareTo(list.get(i - 1)) > 1 || i == list.size() - 1) {
+					if (highest < current) { // update the highest streak and reset the current streak
 						highest = current;
 						current = 1;
 					}
