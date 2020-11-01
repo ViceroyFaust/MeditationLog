@@ -1,9 +1,4 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -25,7 +20,7 @@ public class Journal {
 	/**
 	 * The variable is used to store the filename of the "database".
 	 */
-	private static final File file = new File("data.csv");
+	private static final File file = new File("MeditationData.csv");
 
 	/**
 	 * Writes a JournalEntry object to the CSV file in "yyyy-MM-dd,HH:MM:SS" format.
@@ -108,7 +103,13 @@ public class Journal {
 	 */
 	public static List<JournalEntry> readData() throws IOException {
 		List<JournalEntry> list = new ArrayList<JournalEntry>();
-		BufferedReader reader = new BufferedReader(new FileReader(file));
+		BufferedReader reader;
+		try {
+			 reader = new BufferedReader(new FileReader(file));
+		} catch (FileNotFoundException e) {
+			file.createNewFile();
+			reader = new BufferedReader(new FileReader(file));
+		}
 		String line;
 		while ((line = reader.readLine()) != null) {
 			list.add(JournalEntry.parse(line));
