@@ -51,7 +51,7 @@ public class Calculator {
 	 */
 	public static double getDailyAverage(List<JournalEntry> list) {
 		if (list.size() != 0) {
-			return getMinuteSum(list) / list.size();
+			return (double) getMinuteSum(list) / getDays(list);
 		} else {
 			return 0;
 		}
@@ -117,5 +117,18 @@ public class Calculator {
 			sum += DateTimeHelper.medTimeToMin(journal.getMedTime());
 		}
 		return sum;
+	}
+
+	public static int getDays(List<JournalEntry> list) {
+		if (list.size() == 0) {
+			return 0;
+		}
+		int days = 1;
+		for (int i = 1; i < list.size(); i++) {
+			if (list.get(i).compareTo(list.get(i - 1)) >= 1) {
+				days++;
+			}
+		}
+		return days;
 	}
 }
